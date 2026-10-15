@@ -5,10 +5,13 @@ Works in Chrome, Brave and other Chromium browsers.
 
 ## Installation
 
-1. Open your browser's extensions page: `brave://extensions` in Brave, `chrome://extensions` in Chrome.
-2. Turn on **Developer mode** (toggle in the top right).
-3. Click **Load unpacked** and select this folder.
-4. Pin the extension from the puzzle-piece menu in the toolbar so it's one click away.
+It isn't in the Chrome Web Store, so it's installed from this folder:
+
+1. Get the code: on GitHub, click **Code** → **Download ZIP** and unzip it, or `git clone https://github.com/Creative-Recess/strava-kudos-extension.git`.
+2. Open your browser's extensions page: `brave://extensions` in Brave, `chrome://extensions` in Chrome.
+3. Turn on **Developer mode** (toggle in the top right).
+4. Click **Load unpacked** and select this folder.
+5. Pin the extension from the puzzle-piece menu in the toolbar so it's one click away.
 
 After pulling new changes, click the reload icon on the extension's card, then refresh any open Strava tab.
 
