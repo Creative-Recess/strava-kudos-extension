@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strava: Auto Kudos</title>
+    <style>
+        :root {
+            --orange: #fc4c02;
+            --orange-hover: #e34402;
+            --text: #242428;
+            --muted: #6d6d78;
+            --surface: #ffffff;
+            --track: #ececf0;
+            --divider: #e6e6ea;
+            --success: #1e7d3c;
+            --warning: #a15c00;
+            --error: #c62828;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text: #f0f0f2;
+                --muted: #a0a0aa;
+                --surface: #1f1f23;
+                --track: #34343a;
+                --divider: #34343a;
+                --success: #5cc97a;
+                --warning: #f0b24a;
+                --error: #ff7a6e;
+            }
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            width: 300px;
+            margin: 0;
+            padding: 20px;
+            background: var(--surface);
+            color: var(--text);
+            font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        header img {
+            width: 28px;
+            height: 28px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .description {
+            margin: 0 0 16px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+        button {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 6px;
+            background: var(--orange);
+            color: #fff;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+        button:hover:not(:disabled) {
+            background: var(--orange-hover);
+        }
+        button:disabled {
+            opacity: 0.55;
+            cursor: default;
+        }
+        .status {
+            margin: 12px 0 0;
+            font-size: 13px;
+        }
+        .status:empty {
+            display: none;
+        }
+        .status.success {
+            color: var(--success);
+        }
+        .status.warning {
+            color: var(--warning);
+        }
+        .status.error {
+            color: var(--error);
+        }
+        .progress {
+            height: 6px;
+            margin-top: 12px;
+            border-radius: 3px;
+            background: var(--track);
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0;
+            height: 100%;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+        .stats {
+            display: flex;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--divider);
+        }
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+        .stat-value {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-label {
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="icons/icon48.png" alt="">
+        <h1>Strava: Auto Kudos</h1>
+    </header>
+    <p class="description">Give kudos to the 100 most recent activities in your feed.</p>
+    <button id="giveKudosBtn">Give Kudos</button>
+    <div id="progress" class="progress" hidden>
+        <div id="progressFill" class="progress-fill"></div>
+    </div>
+    <p id="status" class="status" role="status"></p>
+    <div class="stats">
+        <div class="stat"><span id="statToday" class="stat-value">0</span><span class="stat-label">Today</span></div>
+        <div class="stat"><span id="statWeek" class="stat-value">0</span><span class="stat-label">Last 7 days</span></div>
+        <div class="stat"><span id="statAll" class="stat-value">0</span><span class="stat-label">All time</span></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
